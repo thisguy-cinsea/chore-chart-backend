@@ -10,14 +10,23 @@ import java.util.UUID;
 public class User {
 
     @Id
-    private final UUID userId = UUID.randomUUID();
+    private final UUID userId;
     private String firstName;
     private String lastName;
     private String email;
     private String userName;
     private String passWord;
 
+    public User() {
+        this(UUID.randomUUID(), null, null, null, null, null);
+    }
+
     public User(String firstName, String lastName, String email, String userName, String passWord) {
+        this(UUID.randomUUID(), firstName, lastName, email, userName, passWord);
+    }
+
+    public User(UUID userId, String firstName, String lastName, String email, String userName, String passWord) {
+        this.userId = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -67,9 +76,6 @@ public class User {
 
     public void setPassWord(String passWord) {
         this.passWord = passWord;
-    }
-
-    public User() {
     }
 
     @Override
